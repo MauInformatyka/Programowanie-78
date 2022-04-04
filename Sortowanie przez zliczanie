@@ -1,0 +1,56 @@
+def wypisz(tab):  # tworzymy metode do wypiswania zawartosci naszej tablicy
+    for el in tab:
+        print(el, end=" | ")
+
+
+def minMax(tab): #tworzymy funkcje znajdujaca najwiekszy i najmniejszy element
+    min = tab[0] #tworzymy zmienne pomocnicze
+    max = tab[0]
+    for el in tab:
+        if el > max: # a nastepnie sprawdzamy czy sa one wieksz, lub mniejsze od iterowanej wartosci
+            max = el
+        if el < min:
+            min = el
+    array = []
+    array.append(min) #na koniec wrzucamy je w tablice
+    array.append(max)
+    return array
+
+
+
+def sortujZlicz(tab, n):
+    minmax = minMax(tab) #pobieramy skrajne elementy tablicy
+    min = minmax[0]
+    max = minmax[1]
+    countersSize = max - min + 1 #liczymy potrzebna ilosc elementow
+    counters = [0] * countersSize #i od razu tworzymy tablice licznikow
+    print("Stworzono tablice licznikow: ")
+    for x in range(countersSize):
+        print(x+min, "=0", end=" | ")
+    print()
+    for x in range(n):
+        counters[tab[x] - min] += 1 #zliczamy ilosc elementow
+    print("Zliczono ilosc elementow: ")
+    for x in range(countersSize):
+        print(x+min, "=", counters[x], end=" | ")
+    print()
+    lastIndex = 0
+    for x in range(countersSize): # a nastepnie wstawiamy je kolejno w wyjsciowa tablice
+        y = lastIndex
+        while y < counters[x] + lastIndex:
+            tab[y] = x + min
+            y += 1
+        lastIndex = y
+
+
+print("Podaj ilosc elementow tablicy:")
+a = int(input())
+tablica = []
+for i in range(a):
+    print("Podaj element nr. ", (i + 1))
+    tablica.append(int(input()))
+print("Oto twoja tablica:")
+wypisz(tablica)
+sortujZlicz(tablica, a)
+print("Oto twoja tablica po sortowaniu:")
+wypisz(tablica)
