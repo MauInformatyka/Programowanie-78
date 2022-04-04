@@ -1,0 +1,13 @@
+liczba1=int(input('podaj pierwszą liczbę: '))
+liczba2=int(input('podaj drugą liczbę: '))
+licznik=0
+#początek pętli
+while liczba1!=liczba2:
+  licznik+=1
+  if liczba1>liczba2:
+    liczba1=liczba1-liczba2
+  else:
+    liczba2=liczba2-liczba1
+#koniec pętli
+print("Pętla wykonana {} razy".format(licznik))
+print ("NWD to:", liczba1)
